@@ -10,7 +10,7 @@ describe("password validation", function() {
     });
     it("should ensure the presence of an uppercase character", function(){
         expect(function(){
-            validator("askakakakak").toThrow(new Error("password should contain at least one uppercase character"));
+            validator("askakaka").toThrow(new Error("password should contain at least one uppercase character"));
         })
      });
      it("should ensure the presence of an lowercase character", function(){
@@ -28,14 +28,13 @@ describe("password validation", function() {
                validator("hello").toThrow(new Error("password should be longer than eight characters"));
            })
        });
-    
 });
 
 describe("checking if the password is ok", function() {
     it("should return a true for a combination of three criterion passed", function() {
         expect(function() {
             checker("hello1H").toBe("true");
-            checker("AAAAAAAAAA99999").toBe("true");
+            checker("AAAAAAAAAA99999").toEqual("true");
             checker("aaaaa9a9a9a9a9a").toBe("true");
             checker("AAAAAAAAAA99999").toBe("true");
         })
