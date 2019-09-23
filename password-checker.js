@@ -1,25 +1,17 @@
 function password_is_valid(password) {
-  // tr
-  if (password == "") {
-    throw new Error("password cannot be empty");
+  criteria = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{9,}$)/;
+  check = criteria.test(password);
+  try {
+    if (check == false) {
+      throw new Error(
+        "The password should contain at least one uppercase, one lowercase, a numeric character and be 9 characters or longer"
+      );
+    }
+  } catch (error) {
+    console.log(error);
   }
-  if (!/[A-Z]/.test(password)) {
-    throw new Error("password should contain at least one uppercase character");
-  }
-  if (!/[a-z]/.test(password)) {
-    throw new Error("password should contain at least one lowercase character");
-  }
-  if (!/[0-9]/.test(password)) {
-    throw new Error("password should contain at least one numeric character");
-  }
-  if (password.length < 9) {
-    throw new Error("password should be longer than eight characters");
-  }
-  // } catch (error) {
-  //   console.log(error);
-  // }
 }
-//console.log(password_is_valid("A1asd"));
+
 function password_is_ok(password) {
   if (
     /[a-z]/.test(password) &&
